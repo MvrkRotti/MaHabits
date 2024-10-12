@@ -52,7 +52,7 @@ final class HabitViewModel {
         do {
             try context.save()
         } catch {
-            print("Saving error: \(error)")
+            print("Ошибка сохранения: \(error)")
         }
     }
 }

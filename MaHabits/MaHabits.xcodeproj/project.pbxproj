@@ -12,9 +12,11 @@
 		8A9B53C32CBA56B900FBE94A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A9B53C22CBA56B900FBE94A /* Assets.xcassets */; };
 		8A9B53C62CBA56B900FBE94A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8A9B53C52CBA56B900FBE94A /* Base */; };
 		8A9B53DF2CBA923800FBE94A /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53DE2CBA923800FBE94A /* HabitViewModel.swift */; };
-		8A9B53E22CBA939600FBE94A /* Habit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53E02CBA939600FBE94A /* Habit.xcdatamodeld */; };
 		8A9B53E52CBA93DA00FBE94A /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53E32CBA93DA00FBE94A /* Habit+CoreDataClass.swift */; };
 		8A9B53E62CBA93DA00FBE94A /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53E42CBA93DA00FBE94A /* Habit+CoreDataProperties.swift */; };
+		8A9B53E92CBA9B4800FBE94A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9B53E82CBA9B4800FBE94A /* SnapKit */; };
+		8A9B53EB2CBA9D5100FBE94A /* AddHabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53EA2CBA9D5100FBE94A /* AddHabitController.swift */; };
+		8A9B53ED2CBAA48D00FBE94A /* HabitPorgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53EC2CBAA48D00FBE94A /* HabitPorgressController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +27,10 @@
 		8A9B53C52CBA56B900FBE94A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A9B53C72CBA56B900FBE94A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A9B53DE2CBA923800FBE94A /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
-		8A9B53E12CBA939600FBE94A /* Habit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habit.xcdatamodel; sourceTree = "<group>"; };
 		8A9B53E32CBA93DA00FBE94A /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8A9B53E42CBA93DA00FBE94A /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8A9B53EA2CBA9D5100FBE94A /* AddHabitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddHabitController.swift; path = ../../../AddHabitController.swift; sourceTree = "<group>"; };
+		8A9B53EC2CBAA48D00FBE94A /* HabitPorgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitPorgressController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9B53E92CBA9B4800FBE94A /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				8A9B53BA2CBA56B600FBE94A /* HabitViewController.swift */,
+				8A9B53EA2CBA9D5100FBE94A /* AddHabitController.swift */,
+				8A9B53EC2CBAA48D00FBE94A /* HabitPorgressController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -108,7 +114,6 @@
 			children = (
 				8A9B53E32CBA93DA00FBE94A /* Habit+CoreDataClass.swift */,
 				8A9B53E42CBA93DA00FBE94A /* Habit+CoreDataProperties.swift */,
-				8A9B53E02CBA939600FBE94A /* Habit.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,6 +134,9 @@
 			dependencies = (
 			);
 			name = MaHabits;
+			packageProductDependencies = (
+				8A9B53E82CBA9B4800FBE94A /* SnapKit */,
+			);
 			productName = MaHabits;
 			productReference = 8A9B53B32CBA56B600FBE94A /* MaHabits.app */;
 			productType = "com.apple.product-type.application";
@@ -157,6 +165,9 @@
 				Base,
 			);
 			mainGroup = 8A9B53AA2CBA56B600FBE94A;
+			packageReferences = (
+				8A9B53E72CBA9B4800FBE94A /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 8A9B53B42CBA56B600FBE94A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -185,9 +196,10 @@
 			files = (
 				8A9B53BB2CBA56B600FBE94A /* HabitViewController.swift in Sources */,
 				8A9B53E52CBA93DA00FBE94A /* Habit+CoreDataClass.swift in Sources */,
+				8A9B53ED2CBAA48D00FBE94A /* HabitPorgressController.swift in Sources */,
+				8A9B53EB2CBA9D5100FBE94A /* AddHabitController.swift in Sources */,
 				8A9B53E62CBA93DA00FBE94A /* Habit+CoreDataProperties.swift in Sources */,
 				8A9B53B72CBA56B600FBE94A /* AppDelegate.swift in Sources */,
-				8A9B53E22CBA939600FBE94A /* Habit.xcdatamodeld in Sources */,
 				8A9B53DF2CBA923800FBE94A /* HabitViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,19 +422,24 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCVersionGroup section */
-		8A9B53E02CBA939600FBE94A /* Habit.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8A9B53E12CBA939600FBE94A /* Habit.xcdatamodel */,
-			);
-			currentVersion = 8A9B53E12CBA939600FBE94A /* Habit.xcdatamodel */;
-			name = Habit.xcdatamodeld;
-			path = /Users/danilpestov/Desktop/Projects/MaHabits/MaHabits/Model/Habit.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
+/* Begin XCRemoteSwiftPackageReference section */
+		8A9B53E72CBA9B4800FBE94A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
 		};
-/* End XCVersionGroup section */
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A9B53E82CBA9B4800FBE94A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A9B53E72CBA9B4800FBE94A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A9B53AB2CBA56B600FBE94A /* Project object */;
 }
