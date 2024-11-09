@@ -54,11 +54,12 @@ private extension HabitViewController {
             self?.habitList.reloadData()
         }
         
-        addVC.modalPresentationStyle = .pageSheet
-        if let sheet = addVC.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.prefersGrabberVisible = true
-        }
+//        addVC.modalPresentationStyle = .pageSheet
+//        if let sheet = addVC.sheetPresentationController {
+//            sheet.detents = [.medium()]
+//            sheet.prefersGrabberVisible = true
+//        }
+        setupMediumPresent(for: addVC)
         present(addVC, animated: true)
     }
     
@@ -81,7 +82,8 @@ extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let habit = viewModel.habits[indexPath.row]
         let progressVC = HabitPorgressController(viewModel: viewModel, habit: habit)
-        navigationController?.pushViewController(progressVC, animated: true)
+        setupMediumPresent(for: progressVC)
+        present(progressVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

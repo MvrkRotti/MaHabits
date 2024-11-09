@@ -19,8 +19,6 @@ final class HabitPorgressController: UIViewController {
         self.viewModel = viewModel
         self.habit = habit
         super.init(nibName: nil, bundle: nil)
-        modalPresentationStyle = .pageSheet
-        isModalInPresentation = true
     }
     
     required init?(coder: NSCoder) {
@@ -34,11 +32,6 @@ final class HabitPorgressController: UIViewController {
         setupTitleLabel()
         setupProgressLabel()
         setupCompleteButton()
-        
-        if let sheet = self.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.prefersGrabberVisible = true
-        }
     }
 }
 
@@ -58,6 +51,7 @@ private extension HabitPorgressController {
     
     func setupProgressLabel() {
         progressLabel.font = UIFont.systemFont(ofSize: 18)
+        progressLabel.text = "Вы придерживаетесь этой привычки уже \(habit.completionCount) дней"
         progressLabel.textAlignment = .center
         
         view.addSubview(progressLabel)
@@ -70,12 +64,18 @@ private extension HabitPorgressController {
     
     func setupCompleteButton() {
         completionButton.setTitle("Complete day", for: .normal)
-//        completionButton.addTarget(self, action: #selector(completeTapped), for: .touchUpInside)
+        completionButton.addTarget(self, action: #selector(completeTapped), for: .touchUpInside)
+        
+        view.addSubview(completionButton)
+        
+        completionButton.snp.makeConstraints { make in
+            make.top.equalTo(progressLabel.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
     }
     
     private func updateProgress() {
-        let daysCompleted = habit.completionCount
-        progressLabel.text = "Completed \(daysCompleted) times"
+        progressLabel.text = "Вы придерживаетесь этой привычки уже \(habit.completionCount) дней"
     }
     
     @objc func completeTapped() {
