@@ -15,6 +15,8 @@
 		8A9B53E92CBA9B4800FBE94A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9B53E82CBA9B4800FBE94A /* SnapKit */; };
 		8A9B53EB2CBA9D5100FBE94A /* AddHabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53EA2CBA9D5100FBE94A /* AddHabitController.swift */; };
 		8A9B53ED2CBAA48D00FBE94A /* HabitPorgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53EC2CBAA48D00FBE94A /* HabitPorgressController.swift */; };
+		8AC1AD7D2CDF958F00C8ADFD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC1AD7C2CDF958F00C8ADFD /* RealmSwift */; };
+		8AC1AD7F2CDF96DE00C8ADFD /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC1AD7E2CDF96DE00C8ADFD /* Habit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,7 @@
 		8A9B53DE2CBA923800FBE94A /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
 		8A9B53EA2CBA9D5100FBE94A /* AddHabitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddHabitController.swift; path = ../../../AddHabitController.swift; sourceTree = "<group>"; };
 		8A9B53EC2CBAA48D00FBE94A /* HabitPorgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitPorgressController.swift; sourceTree = "<group>"; };
+		8AC1AD7E2CDF96DE00C8ADFD /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AC1AD7D2CDF958F00C8ADFD /* RealmSwift in Frameworks */,
 				8A9B53E92CBA9B4800FBE94A /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +112,7 @@
 		8A9B53DD2CBA922400FBE94A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8AC1AD7E2CDF96DE00C8ADFD /* Habit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			name = MaHabits;
 			packageProductDependencies = (
 				8A9B53E82CBA9B4800FBE94A /* SnapKit */,
+				8AC1AD7C2CDF958F00C8ADFD /* RealmSwift */,
 			);
 			productName = MaHabits;
 			productReference = 8A9B53B32CBA56B600FBE94A /* MaHabits.app */;
@@ -161,6 +167,7 @@
 			mainGroup = 8A9B53AA2CBA56B600FBE94A;
 			packageReferences = (
 				8A9B53E72CBA9B4800FBE94A /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8AC1AD7B2CDF958F00C8ADFD /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 8A9B53B42CBA56B600FBE94A /* Products */;
 			projectDirPath = "";
@@ -192,6 +199,7 @@
 				8A9B53ED2CBAA48D00FBE94A /* HabitPorgressController.swift in Sources */,
 				8A9B53EB2CBA9D5100FBE94A /* AddHabitController.swift in Sources */,
 				8A9B53B72CBA56B600FBE94A /* AppDelegate.swift in Sources */,
+				8AC1AD7F2CDF96DE00C8ADFD /* Habit.swift in Sources */,
 				8A9B53DF2CBA923800FBE94A /* HabitViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +431,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		8AC1AD7B2CDF958F00C8ADFD /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -430,6 +446,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A9B53E72CBA9B4800FBE94A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		8AC1AD7C2CDF958F00C8ADFD /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AC1AD7B2CDF958F00C8ADFD /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
