@@ -14,12 +14,11 @@ final class AddHabitController: UIViewController {
     private let titleTextField = UITextField()
     private let saveButton = UIButton(type: .system)
     
+    var onDismiss: (() -> Void)?
+    
     init(viewModel: HabitViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
-        modalPresentationStyle = .pageSheet
-        isModalInPresentation = true
     }
     
     required init?(coder: NSCoder) {
@@ -31,11 +30,6 @@ final class AddHabitController: UIViewController {
         view.backgroundColor = .systemBackground
         setupTextField()
         setupSaveButton()
-        
-        if let sheet = self.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.prefersGrabberVisible = true
-        }
     }
 }
 
@@ -64,8 +58,9 @@ private extension AddHabitController {
     }
     
     @objc func saveTapped() {
-        guard let title = titleTextField.text, !title.isEmpty else { return }
-//        viewModel.addHabitWith(title: title)
-        dismiss(animated: true, completion: nil)
+        guard let name = titleTextField.text, !name.isEmpty else { return }
+        viewModel.addHabbit(name: name)
+        onDismiss?()
+        dismiss(animated: true)
     }
 }

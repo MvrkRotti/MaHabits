@@ -9,15 +9,15 @@ import UIKit
 
 
 final class HabitPorgressController: UIViewController {
-//    private let habit: HabitEntity
     private let viewModel: HabitViewModel
+    private let habit: Habit
     private let titleLabel = UILabel()
     private let progressLabel = UILabel()
     private let completionButton = UIButton(type: .system)
     
-    init(/*habit: HabitEntity,*/ viewModel: HabitViewModel) {
-//        self.habit = habit
+    init(viewModel: HabitViewModel, habit: Habit) {
         self.viewModel = viewModel
+        self.habit = habit
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .pageSheet
         isModalInPresentation = true
@@ -34,7 +34,6 @@ final class HabitPorgressController: UIViewController {
         setupTitleLabel()
         setupProgressLabel()
         setupCompleteButton()
-//        updateProgress()
         
         if let sheet = self.sheetPresentationController {
             sheet.detents = [.medium()]
@@ -45,7 +44,7 @@ final class HabitPorgressController: UIViewController {
 
 private extension HabitPorgressController {
     func setupTitleLabel() {
-//        titleLabel.text = "Progress for \(habit.title ?? "Habit")"
+        titleLabel.text = "Progress for \(habit.name)"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         titleLabel.textAlignment = .center
         
@@ -74,13 +73,13 @@ private extension HabitPorgressController {
 //        completionButton.addTarget(self, action: #selector(completeTapped), for: .touchUpInside)
     }
     
-//    private func updateProgress() {
-//        let daysCompleted = habit.completionCount
-//        progressLabel.text = "Completed \(daysCompleted) times"
-//    }
-//    
-//    @objc func completeTapped() {
-//        viewModel.completeHabit(habit)
-//        updateProgress()
-//    }
+    private func updateProgress() {
+        let daysCompleted = habit.completionCount
+        progressLabel.text = "Completed \(daysCompleted) times"
+    }
+    
+    @objc func completeTapped() {
+        viewModel.incrementCompletionCount(for: habit)
+        updateProgress()
+    }
 }

@@ -7,29 +7,19 @@
 
 import UIKit
 import SnapKit
-import CoreData
 
 class HabitViewController: UIViewController {
     
     //MARK: - Variables
-    private let viewModel: HabitViewModel
+    private let viewModel = HabitViewModel()
     private let habitList = UITableView()
     
     //MARK: - Lifecycle
-    init(viewModel: HabitViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupNavBar()
-//        viewModel.fetchHabits()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +50,16 @@ private extension HabitViewController {
     
     @objc func addTapped() {
         let addVC = AddHabitController(viewModel: viewModel)
-        present(addVC, animated: true, completion: nil)
+        addVC.onDismiss = { [weak self] in
+            self?.habitList.reloadData()
+        }
+        
+        addVC.modalPresentationStyle = .pageSheet
+        if let sheet = addVC.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersGrabberVisible = true
+        }
+        present(addVC, animated: true)
     }
     
     
@@ -69,28 +68,26 @@ private extension HabitViewController {
 //MARK: - Table view settings extension
 extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        viewModel.habits.count
-        return 3
+        viewModel.habits.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = habitList.dequeueReusableCell(withIdentifier: "HabitCell", for: indexPath)
-//        let habit = viewModel.habits[indexPath.row]
-        cell.textLabel?.text = "Test"
+        let habit = viewModel.habits[indexPath.row]
+        cell.textLabel?.text = habit.name
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let habit = viewModel.habits[indexPath.row]
-//        let progressVC = HabitPorgressController(habit: habit, viewModel: viewModel)
-//        navigationController?.pushViewController(progressVC, animated: true)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let habit = viewModel.habits[indexPath.row]
+        let progressVC = HabitPorgressController(viewModel: viewModel, habit: habit)
+        navigationController?.pushViewController(progressVC, animated: true)
+    }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            let habit = viewModel.habits[indexPath.row]
-//            viewModel.deleteHabit(habit)
-//            habitList.deleteRows(at: [indexPath], with: .automatic)
-//        }
-//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            viewModel.deleteHabit(at: indexPath.row)
+            habitList.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }

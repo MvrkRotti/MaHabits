@@ -13,6 +13,7 @@ class Habit: Object {
     @Persisted var name: String = ""
     @Persisted var isCompleted: Bool = false
     @Persisted var createdDate: Date = Date()
+    @Persisted var completionCount: Int = 0
     
     convenience init(name: String) {
         self.init()

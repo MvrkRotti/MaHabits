@@ -15,12 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let config = Realm.Configuration()
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if oldSchemaVersion < 1 {
+                }
+            }
+        )
         Realm.Configuration.defaultConfiguration = config
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewModel = HabitViewModel()
-        let rootViewController = HabitViewController(viewModel: viewModel)
+        let rootViewController = HabitViewController()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
