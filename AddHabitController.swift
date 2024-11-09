@@ -58,14 +58,14 @@ private extension AddHabitController {
         view.addSubview(saveButton)
         
         saveButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(20)
+            make.bottom.equalToSuperview().offset(-20)
             make.centerX.equalToSuperview()
         }
     }
     
     @objc func saveTapped() {
         guard let title = titleTextField.text, !title.isEmpty else { return }
-        viewModel.addHabitWith(title: title)
+//        viewModel.addHabitWith(title: title)
         dismiss(animated: true, completion: nil)
     }
 }

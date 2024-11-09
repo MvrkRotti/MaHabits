@@ -12,8 +12,6 @@
 		8A9B53C32CBA56B900FBE94A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A9B53C22CBA56B900FBE94A /* Assets.xcassets */; };
 		8A9B53C62CBA56B900FBE94A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8A9B53C52CBA56B900FBE94A /* Base */; };
 		8A9B53DF2CBA923800FBE94A /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53DE2CBA923800FBE94A /* HabitViewModel.swift */; };
-		8A9B53E52CBA93DA00FBE94A /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53E32CBA93DA00FBE94A /* Habit+CoreDataClass.swift */; };
-		8A9B53E62CBA93DA00FBE94A /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53E42CBA93DA00FBE94A /* Habit+CoreDataProperties.swift */; };
 		8A9B53E92CBA9B4800FBE94A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9B53E82CBA9B4800FBE94A /* SnapKit */; };
 		8A9B53EB2CBA9D5100FBE94A /* AddHabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53EA2CBA9D5100FBE94A /* AddHabitController.swift */; };
 		8A9B53ED2CBAA48D00FBE94A /* HabitPorgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B53EC2CBAA48D00FBE94A /* HabitPorgressController.swift */; };
@@ -27,8 +25,6 @@
 		8A9B53C52CBA56B900FBE94A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A9B53C72CBA56B900FBE94A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A9B53DE2CBA923800FBE94A /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
-		8A9B53E32CBA93DA00FBE94A /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8A9B53E42CBA93DA00FBE94A /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8A9B53EA2CBA9D5100FBE94A /* AddHabitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddHabitController.swift; path = ../../../AddHabitController.swift; sourceTree = "<group>"; };
 		8A9B53EC2CBAA48D00FBE94A /* HabitPorgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitPorgressController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,8 +108,6 @@
 		8A9B53DD2CBA922400FBE94A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8A9B53E32CBA93DA00FBE94A /* Habit+CoreDataClass.swift */,
-				8A9B53E42CBA93DA00FBE94A /* Habit+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,10 +189,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A9B53BB2CBA56B600FBE94A /* HabitViewController.swift in Sources */,
-				8A9B53E52CBA93DA00FBE94A /* Habit+CoreDataClass.swift in Sources */,
 				8A9B53ED2CBAA48D00FBE94A /* HabitPorgressController.swift in Sources */,
 				8A9B53EB2CBA9D5100FBE94A /* AddHabitController.swift in Sources */,
-				8A9B53E62CBA93DA00FBE94A /* Habit+CoreDataProperties.swift in Sources */,
 				8A9B53B72CBA56B600FBE94A /* AppDelegate.swift in Sources */,
 				8A9B53DF2CBA923800FBE94A /* HabitViewModel.swift in Sources */,
 			);

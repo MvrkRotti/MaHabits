@@ -29,7 +29,7 @@ class HabitViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavBar()
-        viewModel.fetchHabits()
+//        viewModel.fetchHabits()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +60,7 @@ private extension HabitViewController {
     
     @objc func addTapped() {
         let addVC = AddHabitController(viewModel: viewModel)
-        navigationController?.pushViewController(addVC, animated: true)
+        present(addVC, animated: true, completion: nil)
     }
     
     
@@ -69,26 +69,28 @@ private extension HabitViewController {
 //MARK: - Table view settings extension
 extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.habits.count
+//        viewModel.habits.count
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = habitList.dequeueReusableCell(withIdentifier: "HabitCell", for: indexPath)
-        let habit = viewModel.habits[indexPath.row]
-        cell.textLabel?.text = habit.title
+//        let habit = viewModel.habits[indexPath.row]
+        cell.textLabel?.text = "Test"
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let habit = viewModel.habits[indexPath.row]
-        let progressVC = UIViewController()
-        navigationController?.pushViewController(progressVC, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let habit = viewModel.habits[indexPath.row]
+//        let progressVC = HabitPorgressController(habit: habit, viewModel: viewModel)
+//        navigationController?.pushViewController(progressVC, animated: true)
+//    }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let habit = viewModel.habits[indexPath.row]
-            viewModel.deleteHabit(habit)
-        }
-    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let habit = viewModel.habits[indexPath.row]
+//            viewModel.deleteHabit(habit)
+//            habitList.deleteRows(at: [indexPath], with: .automatic)
+//        }
+//    }
 }
