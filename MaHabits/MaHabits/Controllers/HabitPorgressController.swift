@@ -58,7 +58,7 @@ private extension HabitPorgressController {
     
     func setupProgressLabel() {
         progressLabel.font = UIFont.systemFont(ofSize: 22)
-        progressLabel.text = "Вы придерживаетесь этой привычки уже \(habit.completionCount) дней"
+        progressLabel.text = "Вы придерживаетесь этой привычки уже \(daysString(for: habit.completionCount))"
         progressLabel.textAlignment = .center
         progressLabel.numberOfLines = 0
         
@@ -95,8 +95,7 @@ private extension HabitPorgressController {
         completionButton.isEnabled = false
         completionButton.backgroundColor = .gray
         
-        let now = Date()
-        userDefaults.set(now, forKey: "\(buttonId)lastTapDate")
+        userDefaults.set(Date(), forKey: "\(buttonId)lastTapDate")
         
         viewModel.incrementCompletionCount(for: habit)
         updateProgress()
@@ -106,8 +105,9 @@ private extension HabitPorgressController {
         let key = "\(buttonId)lastTapDate"
         if let lastTapDae = userDefaults.object(forKey: key) as? Date {
             let startOfNextDay = Calendar.current.startOfDay(for: lastTapDae.addingTimeInterval(24 * 60 * 60))
-            
-            if Date() >= startOfNextDay {
+            print("Существующая дата последнего нажатия: \(lastTapDae), кнопка активна: \(completionButton.isEnabled)")
+
+            if lastTapDae >= startOfNextDay {
                 completionButton.isEnabled = true
                 completionButton.backgroundColor = .systemGreen
             } else {

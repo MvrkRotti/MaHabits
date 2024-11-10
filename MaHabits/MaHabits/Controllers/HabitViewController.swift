@@ -83,6 +83,10 @@ extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let buttonId = "button\(indexPath.row)"
+            
+            UserDefaults.standard.removeObject(forKey: "\(buttonId)lastTapDate")
+            
             viewModel.deleteHabit(at: indexPath.row)
             habitList.deleteRows(at: [indexPath], with: .automatic)
         }
