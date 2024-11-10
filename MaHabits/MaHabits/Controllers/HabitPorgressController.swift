@@ -15,6 +15,10 @@ final class HabitPorgressController: UIViewController {
     private let progressLabel = UILabel()
     private let completionButton = UIButton(type: .system)
     
+    var buttonId: String = ""
+    
+    private let userDefaults = UserDefaults.standard
+    
     init(viewModel: HabitViewModel, habit: Habit) {
         self.viewModel = viewModel
         self.habit = habit
@@ -32,6 +36,7 @@ final class HabitPorgressController: UIViewController {
         setupTitleLabel()
         setupProgressLabel()
         setupCompleteButton()
+        updateButtonState()
     }
 }
 
@@ -79,7 +84,27 @@ private extension HabitPorgressController {
     }
     
     @objc func completeTapped() {
+        completionButton.isEnabled = false
+        
+        let now = Date()
+        userDefaults.set(now, forKey: "\(buttonId)lastTapDate")
+        
         viewModel.incrementCompletionCount(for: habit)
         updateProgress()
+    }
+    
+    private func updateButtonState() {
+        let key = "\(buttonId)lastTapDate"
+        if let lastTapDae = userDefaults.object(forKey: key) as? Date {
+            let startOfNextDay = Calendar.current.startOfDay(for: Date().addingTimeInterval(24 * 60 * 60))
+            
+            if Date() >= startOfNextDay {
+                completionButton.isEnabled = true
+            } else {
+                completionButton.isEnabled = false
+            }
+        } else {
+            completionButton.isEnabled = true
+        }
     }
 }

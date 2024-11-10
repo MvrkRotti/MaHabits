@@ -13,7 +13,7 @@ class HabitViewController: UIViewController {
     //MARK: - Variables
     private let viewModel = HabitViewModel()
     private let habitList = UITableView()
-    
+        
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -53,12 +53,6 @@ private extension HabitViewController {
         addVC.onDismiss = { [weak self] in
             self?.habitList.reloadData()
         }
-        
-//        addVC.modalPresentationStyle = .pageSheet
-//        if let sheet = addVC.sheetPresentationController {
-//            sheet.detents = [.medium()]
-//            sheet.prefersGrabberVisible = true
-//        }
         setupMediumPresent(for: addVC)
         present(addVC, animated: true)
     }
@@ -82,6 +76,7 @@ extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let habit = viewModel.habits[indexPath.row]
         let progressVC = HabitPorgressController(viewModel: viewModel, habit: habit)
+        progressVC.buttonId = "button\(indexPath.row)"
         setupMediumPresent(for: progressVC)
         present(progressVC, animated: true)
     }
