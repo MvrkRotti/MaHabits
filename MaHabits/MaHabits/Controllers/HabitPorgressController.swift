@@ -74,7 +74,6 @@ private extension HabitPorgressController {
     func setupCompleteButton() {
         completionButton.setTitle("Выполнил", for: .normal)
         completionButton.setTitleColor(.black, for: .normal)
-        //        completionButton.backgroundColor = .systemGreen
         completionButton.layer.cornerRadius = 15
         completionButton.addTarget(self, action: #selector(completeTapped), for: .touchUpInside)
         
