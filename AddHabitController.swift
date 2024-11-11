@@ -12,8 +12,9 @@ final class AddHabitController: UIViewController {
     private let viewModel: HabitViewModel
     
     private let titleTextField = UITextField()
-    private let descriptionLabel = UILabel()
+    private let titleLabel = UILabel()
     private let saveButton = UIButton()
+    private let infoLabel = UILabel()
     
     var onDismiss: (() -> Void)?
     
@@ -31,11 +32,28 @@ final class AddHabitController: UIViewController {
         view.backgroundColor = .systemBackground
         setupDescrLabel()
         setupTextField()
+        setupInfoLabel()
         setupSaveButton()
     }
 }
 
 private extension AddHabitController {
+    
+    func setupDescrLabel() {
+        titleLabel.text = "Начни с малого! \n Добавь привычку и становись немного лучше. Укажи название в поле снизу"
+        titleLabel.numberOfLines = 0
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        titleLabel.textAlignment = .center
+        
+        view.addSubview(titleLabel)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(view.bounds.height / 21)
+            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(20)
+        }
+    }
+    
     func setupTextField() {
         titleTextField.placeholder = "Название"
         titleTextField.borderStyle = .roundedRect
@@ -43,22 +61,23 @@ private extension AddHabitController {
         view.addSubview(titleTextField)
         
         titleTextField.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(25)
+            make.top.equalTo(titleLabel.snp.bottom).offset(view.bounds.height / 35)
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview().inset(25)
         }
     }
     
-    func setupDescrLabel() {
-        descriptionLabel.text = "Test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test"
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.font = UIFont.systemFont(ofSize: 20)
-        descriptionLabel.textAlignment = .center
+    func setupInfoLabel() {
+        infoLabel.text = "Укажите название максимально понятно и лаконично, без лишних подробностей. Название не должно превышать 15 символов."
+        infoLabel.numberOfLines = 0
+        infoLabel.font = UIFont.systemFont(ofSize: 15)
+        infoLabel.textAlignment = .center
+        infoLabel.textColor = .lightGray
         
-        view.addSubview(descriptionLabel)
+        view.addSubview(infoLabel)
         
-        descriptionLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(40)
+        infoLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleTextField.snp.bottom).inset(-view.bounds.height / 35)
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview().inset(20)
         }
@@ -82,7 +101,7 @@ private extension AddHabitController {
     }
     
     @objc func saveTapped() {
-        guard let name = titleTextField.text, !name.isEmpty else { return }
+        guard let name = titleTextField.text, !name.isEmpty, name.count < 15 else { return }
         viewModel.addHabbit(name: name)
         onDismiss?()
         dismiss(animated: true)
