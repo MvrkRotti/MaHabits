@@ -40,7 +40,7 @@ final class AddHabitController: UIViewController {
 private extension AddHabitController {
     
     func setupDescrLabel() {
-        titleLabel.text = "Начни с малого! \n Добавь привычку и становись немного лучше. Укажи название в поле снизу"
+        titleLabel.text = "Пора начинать! \n Добавь привычку и становись немного лучше. Укажи название в поле снизу"
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         titleLabel.textAlignment = .center

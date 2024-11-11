@@ -13,18 +13,24 @@ class HabitViewController: UIViewController {
     //MARK: - Variables
     private let viewModel = HabitViewModel()
     private let habitList = UITableView()
-        
+    private let phraseLabel = UILabel()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setupTableView()
         setupNavBar()
+        setupPhraseLabel()
+        checkData()
+        addNavigationBarSeparator()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         habitList.reloadData()
+        checkData()
     }
 }
 
@@ -48,10 +54,37 @@ private extension HabitViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
     }
     
+    func setupPhraseLabel() {
+        phraseLabel.isHidden = true
+        phraseLabel.text = "\"Сильные привычки формируют сильную личность. Начни с малого - и ты удивишься, как делеко можешь зайти!\""
+        phraseLabel.font = UIFont.systemFont(ofSize: 18)
+        phraseLabel.textColor = .lightGray
+        phraseLabel.numberOfLines = 0
+        phraseLabel.textAlignment = .center
+        
+        view.addSubview(phraseLabel)
+        
+        phraseLabel.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.left.right.equalToSuperview().inset(20)
+        }
+    }
+    
+    func checkData() {
+        if viewModel.habits.isEmpty {
+            phraseLabel.isHidden = false
+            habitList.isHidden = true
+        } else {
+            habitList.isHidden = false
+            phraseLabel.isHidden = true
+        }
+    }
+    
     @objc func addTapped() {
         let addVC = AddHabitController(viewModel: viewModel)
         addVC.onDismiss = { [weak self] in
             self?.habitList.reloadData()
+            self?.checkData()
         }
         setupMediumPresent(for: addVC)
         present(addVC, animated: true)
@@ -89,6 +122,7 @@ extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
             
             viewModel.deleteHabit(at: indexPath.row)
             habitList.deleteRows(at: [indexPath], with: .automatic)
+            checkData()
         }
     }
 }
