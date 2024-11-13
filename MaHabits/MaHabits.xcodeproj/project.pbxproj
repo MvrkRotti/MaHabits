@@ -18,6 +18,7 @@
 		8AC1AD7D2CDF958F00C8ADFD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC1AD7C2CDF958F00C8ADFD /* RealmSwift */; };
 		8AC1AD7F2CDF96DE00C8ADFD /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC1AD7E2CDF96DE00C8ADFD /* Habit.swift */; };
 		8AC1AD822CDFA9BE00C8ADFD /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC1AD812CDFA9BE00C8ADFD /* UIViewController.swift */; };
+		8AC1AD852CE5323F00C8ADFD /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC1AD842CE5323F00C8ADFD /* HabitCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		8A9B53EC2CBAA48D00FBE94A /* HabitPorgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitPorgressController.swift; sourceTree = "<group>"; };
 		8AC1AD7E2CDF96DE00C8ADFD /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		8AC1AD812CDFA9BE00C8ADFD /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		8AC1AD842CE5323F00C8ADFD /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +71,10 @@
 				8AC1AD802CDFA9A300C8ADFD /* Extensions */,
 				8A9B53D92CBA89BD00FBE94A /* Application */,
 				8A9B53DB2CBA8A7300FBE94A /* Resources */,
+				8A9B53DD2CBA922400FBE94A /* Model */,
+				8AC1AD832CE5321100C8ADFD /* Views */,
 				8A9B53DA2CBA8A5E00FBE94A /* Controllers */,
 				8A9B53DC2CBA921800FBE94A /* ViewModel */,
-				8A9B53DD2CBA922400FBE94A /* Model */,
 				8A9B53C72CBA56B900FBE94A /* Info.plist */,
 			);
 			path = MaHabits;
@@ -126,6 +129,14 @@
 				8AC1AD812CDFA9BE00C8ADFD /* UIViewController.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8AC1AD832CE5321100C8ADFD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8AC1AD842CE5323F00C8ADFD /* HabitCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +219,7 @@
 			files = (
 				8AC1AD822CDFA9BE00C8ADFD /* UIViewController.swift in Sources */,
 				8A9B53BB2CBA56B600FBE94A /* HabitViewController.swift in Sources */,
+				8AC1AD852CE5323F00C8ADFD /* HabitCell.swift in Sources */,
 				8A9B53ED2CBAA48D00FBE94A /* HabitPorgressController.swift in Sources */,
 				8A9B53EB2CBA9D5100FBE94A /* AddHabitController.swift in Sources */,
 				8A9B53B72CBA56B600FBE94A /* AppDelegate.swift in Sources */,

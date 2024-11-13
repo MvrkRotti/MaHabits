@@ -68,7 +68,7 @@ private extension AddHabitController {
     }
     
     func setupInfoLabel() {
-        infoLabel.text = "Укажите название максимально понятно и лаконично, без лишних подробностей. Название не должно превышать 15 символов."
+        infoLabel.text = "Укажите название максимально понятно и лаконично, без лишних подробностей. Название не должно превышать 25 символов."
         infoLabel.numberOfLines = 0
         infoLabel.font = UIFont.systemFont(ofSize: 15)
         infoLabel.textAlignment = .center
@@ -101,7 +101,7 @@ private extension AddHabitController {
     }
     
     @objc func saveTapped() {
-        guard let name = titleTextField.text, !name.isEmpty, name.count < 15 else { return }
+        guard let name = titleTextField.text, !name.isEmpty, name.count < 25 else { return }
         viewModel.addHabbit(name: name)
         onDismiss?()
         dismiss(animated: true)
