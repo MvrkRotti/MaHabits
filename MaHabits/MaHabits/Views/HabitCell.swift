@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class NoteCell: UITableViewCell {
+final class HabitCell: UITableViewCell {
     
     static let identifier  = "HabitCell"
     
@@ -24,6 +24,8 @@ final class NoteCell: UITableViewCell {
         return label
     }()
     
+    //Добавить progress bar
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -34,18 +36,18 @@ final class NoteCell: UITableViewCell {
         setupUI()
     }
     
-    func configureCell(with title: String, content: String) {
+    func configureCell(with title: String) {
         titleLabel.text = title
     }
 }
 
-private extension NoteCell {
+private extension HabitCell {
     func setupUI() {
         contentView.addSubview(containerView)
         containerView.addSubview(titleLabel)
         
         containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
+            make.edges.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in

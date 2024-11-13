@@ -42,7 +42,7 @@ private extension HabitViewController {
         
         habitList.delegate = self
         habitList.dataSource = self
-        habitList.register(UITableViewCell.self, forCellReuseIdentifier: "HabitCell")
+        habitList.register(HabitCell.self, forCellReuseIdentifier: HabitCell.identifier)
         
         habitList.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -100,13 +100,15 @@ extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = habitList.dequeueReusableCell(withIdentifier: "HabitCell", for: indexPath)
+        let cell = habitList.dequeueReusableCell(withIdentifier: HabitCell.identifier, for: indexPath) as! HabitCell
         let habit = viewModel.habits[indexPath.row]
-        cell.textLabel?.text = habit.name
+        //        cell.textLabel?.text = habit.name
+        cell.configureCell(with: habit.name)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        habitList.deselectRow(at: indexPath, animated: true)
         let habit = viewModel.habits[indexPath.row]
         let progressVC = HabitPorgressController(viewModel: viewModel, habit: habit)
         progressVC.buttonId = "button\(indexPath.row)"
@@ -124,5 +126,13 @@ extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
             habitList.deleteRows(at: [indexPath], with: .automatic)
             checkData()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        "Удалить"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        view.frame.height / 10
     }
 }
