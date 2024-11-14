@@ -51,8 +51,8 @@ private extension HabitCell {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.left.equalToSuperview().offset(10)
+            make.centerY.equalTo(containerView)
+            make.left.equalToSuperview().offset(20)
         }
     }
 }

@@ -107,7 +107,7 @@ private extension HabitPorgressController {
             let startOfNextDay = Calendar.current.startOfDay(for: lastTapDae.addingTimeInterval(24 * 60 * 60))
             print("Существующая дата последнего нажатия: \(lastTapDae), кнопка активна: \(completionButton.isEnabled)")
 
-            if lastTapDae >= startOfNextDay {
+            if Date() >= startOfNextDay {
                 completionButton.isEnabled = true
                 completionButton.backgroundColor = .systemGreen
             } else {
