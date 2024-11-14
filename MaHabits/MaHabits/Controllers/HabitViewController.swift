@@ -19,7 +19,7 @@ class HabitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = #colorLiteral(red: 0.9986160398, green: 0.9614967704, blue: 0.8334832788, alpha: 1)
         setupTableView()
         setupNavBar()
         setupPhraseLabel()
@@ -42,6 +42,8 @@ private extension HabitViewController {
         
         habitList.delegate = self
         habitList.dataSource = self
+        habitList.separatorStyle = .none
+        habitList.backgroundColor = .clear
         habitList.register(HabitCell.self, forCellReuseIdentifier: HabitCell.identifier)
         
         habitList.snp.makeConstraints { make in
@@ -102,8 +104,8 @@ extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = habitList.dequeueReusableCell(withIdentifier: HabitCell.identifier, for: indexPath) as! HabitCell
         let habit = viewModel.habits[indexPath.row]
-        //        cell.textLabel?.text = habit.name
-        cell.configureCell(with: habit.name)
+        cell.configureCell(with: habit.name, days: habit.completionCount)
+        cell.selectionStyle = .none
         return cell
     }
     
