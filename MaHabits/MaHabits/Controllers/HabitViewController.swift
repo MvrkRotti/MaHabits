@@ -47,7 +47,7 @@ private extension HabitViewController {
         habitList.delegate = self
         habitList.dataSource = self
         habitList.separatorStyle = .none
-        habitList.backgroundColor = .clear
+        habitList.backgroundColor = #colorLiteral(red: 0.9986160398, green: 0.9614967704, blue: 0.8334832788, alpha: 1)
         habitList.register(HabitCell.self, forCellReuseIdentifier: HabitCell.identifier)
         
         habitList.snp.makeConstraints { make in

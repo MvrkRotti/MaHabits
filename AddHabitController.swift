@@ -68,7 +68,7 @@ private extension AddHabitController {
     }
     
     func setupInfoLabel() {
-        infoLabel.text = "Укажите название максимально понятно и лаконично, без лишних подробностей. Название не должно превышать 25 символов."
+        infoLabel.text = "Укажите название коротко и лаконично, без лишних подробностей. Название не должно превышать 25 символов."
         infoLabel.numberOfLines = 0
         infoLabel.font = UIFont.systemFont(ofSize: 15)
         infoLabel.textAlignment = .center
