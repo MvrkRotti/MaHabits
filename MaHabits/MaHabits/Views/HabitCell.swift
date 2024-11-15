@@ -33,9 +33,7 @@ final class HabitCell: UITableViewCell {
         label.numberOfLines = 1
         return label
     }()
-    
-    //Добавить progress bar
-    
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -52,7 +50,7 @@ final class HabitCell: UITableViewCell {
     
     func configureCell(with title: String, days: Int) {
         titleLabel.text = title
-        daysLabel.text = "🔥\(days)"
+        daysLabel.text = "🔥 \(days)"
     }
 }
 

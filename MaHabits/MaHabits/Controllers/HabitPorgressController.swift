@@ -15,6 +15,8 @@ final class HabitPorgressController: UIViewController {
     private let progressLabel = UILabel()
     private let completionButton = UIButton()
     
+    weak var delegate: HabitDetailViewControllerDelegate?
+    
     var buttonId: String = ""
     
     private let userDefaults = UserDefaults.standard
@@ -99,6 +101,7 @@ private extension HabitPorgressController {
         
         viewModel.incrementCompletionCount(for: habit)
         updateProgress()
+        delegate?.didUpdateHabit()
     }
     
     private func updateButtonState() {

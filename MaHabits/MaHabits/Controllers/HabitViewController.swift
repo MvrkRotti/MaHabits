@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol HabitDetailViewControllerDelegate: AnyObject {
+    func didUpdateHabit()
+}
+
 class HabitViewController: UIViewController {
     
     //MARK: - Variables
@@ -114,6 +118,7 @@ extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
         let habit = viewModel.habits[indexPath.row]
         let progressVC = HabitPorgressController(viewModel: viewModel, habit: habit)
         progressVC.buttonId = "button\(indexPath.row)"
+        progressVC.delegate = self
         setupMediumPresent(for: progressVC)
         present(progressVC, animated: true)
     }
@@ -136,5 +141,11 @@ extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         view.frame.height / 10
+    }
+}
+
+extension HabitViewController: HabitDetailViewControllerDelegate {
+    func didUpdateHabit() {
+        habitList.reloadData()
     }
 }
