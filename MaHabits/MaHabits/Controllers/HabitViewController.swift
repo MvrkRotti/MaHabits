@@ -123,16 +123,39 @@ extension HabitViewController: UITableViewDelegate, UITableViewDataSource {
         present(progressVC, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let buttonId = "button\(indexPath.row)"
-            
-            UserDefaults.standard.removeObject(forKey: "\(buttonId)lastTapDate")
-            
-            viewModel.deleteHabit(at: indexPath.row)
-            habitList.deleteRows(at: [indexPath], with: .automatic)
-            checkData()
-        }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let buttonId = "button\(indexPath.row)"
+//            
+//            UserDefaults.standard.removeObject(forKey: "\(buttonId)lastTapDate")
+//            
+//            viewModel.deleteHabit(at: indexPath.row)
+//            habitList.deleteRows(at: [indexPath], with: .automatic)
+//            checkData()
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let removeAction = UIContextualAction(
+            style: .destructive,
+            title: nil,
+            handler: { [weak self] (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
+                guard let self else { return }
+                let buttonId = "button\(indexPath.row)"
+                
+                UserDefaults.standard.removeObject(forKey: "\(buttonId)lastTapDate")
+                
+                viewModel.deleteHabit(at: indexPath.row)
+                habitList.deleteRows(at: [indexPath], with: .automatic)
+                checkData()
+                success(true)
+            }
+        )
+        
+        removeAction.image = UIImage(named: "deleteIcon")?.withTintColor(.red, renderingMode: .alwaysOriginal)
+        removeAction.backgroundColor = view.backgroundColor
+        
+        return UISwipeActionsConfiguration(actions: [removeAction])
     }
     
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
